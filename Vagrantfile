@@ -6,6 +6,10 @@ Vagrant.configure("2") do |config|
     config.vbguest.auto_update = true
   end
 
+  config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--cpus", "2", "--memory", "2048"]
+  end
+
   config.vm.network "private_network", ip: "192.168.34.61"
   config.vm.synced_folder "./", "/vagrant", id: "vagrant-root",
   owner: "vagrant",
